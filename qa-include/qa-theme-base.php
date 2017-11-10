@@ -1717,7 +1717,7 @@ class qa_html_theme_base
 			'<div class="qa-q-item-title">',
 			'<a href="' . $q_item['url'] . '">' . $q_item['title'] . '</a>',
 			// add closed note in title
-			empty($q_item['closed']['state']) ? '' : ' [' . $q_item['closed']['state'] . ']',
+			empty($q_item['closed']['state']) ? '' : '<span class="closed-note"> [' . $q_item['closed']['state'] . ']</span>',
 			'</div>'
 		);
 	}
