@@ -1,0 +1,9 @@
+[submodule "qa-plugin/q2apro-change-post-owner"]
+	path = qa-plugin/q2apro-change-post-owner
+	url = https://github.com/q2apro/q2apro-change-post-owner.git
+[submodule "qa-plugin/permission2categories"]
+	path = qa-plugin/permission2categories
+	url = https://github.com/kfuchs/permission2categories.git
+[submodule "qa-theme/cleanstrap"]
+	path = qa-theme/cleanstrap
+	url = https://github.com/chriswep/CleanStrap.git
