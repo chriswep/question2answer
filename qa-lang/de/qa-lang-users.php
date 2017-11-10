@@ -36,7 +36,7 @@
 		'change_password' => 'Passwort ändern',
 		'confirm_complete' => 'Danke - Deine Email-Adresse wurde bestätigt',
 		'confirm_emailed' => 'Wir haben dir einen Bestätigungs-Link geschickt. Bitte klicke den Link, um deine Email-Adresse zu bestätigen.',
-		'confirm_title' => 'Email-Adresse bestätigen',
+		'confirm_title' => 'Email-Adresse erfolgreich bestätigt',
 		'confirm_wrong_log_in' => 'Code nicht korrekt - bitte ^1logge dich ein^2 um einen neuen Link zu bekommen',
 		'confirm_wrong_resend' => 'Code nicht korrekt - klicke um einen neuen Link zu bekommen',
 		'edit_user_button' => 'Diesen Benutzer bearbeiten',
