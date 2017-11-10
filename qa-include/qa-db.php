@@ -611,7 +611,7 @@ function qa_db_multi_select($selectspecs)
 	// Build the query based on this full list
 
 	$query = '';
-	foreach ($selectspecs as $selectkey => $selectspec) {
+	foreach ($selectspecs as $selectkey => $selectspec) {		
 		$subquery = "(SELECT '" . qa_db_escape_string($selectkey) . "'" . (empty($query) ? ' AS selectkey' : '');
 
 		foreach ($outcolumns as $columnas) {
@@ -699,11 +699,15 @@ function qa_db_post_select(&$outresult, $selectspec)
 		}
 
 		$outresult = array_reverse($outresult, true);
-	}
-
+	} 
+	
 	if (isset($selectspec['arrayvalue']))
 		foreach ($outresult as $key => $value)
 			$outresult[$key] = $value[$selectspec['arrayvalue']];
+
+	if (isset($selectspec['filter'])) {
+		$outresult = array_filter($outresult, $selectspec['filter']);
+	}		
 
 	if (@$selectspec['single'])
 		$outresult = count($outresult) ? reset($outresult) : null;

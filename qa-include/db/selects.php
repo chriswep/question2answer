@@ -165,6 +165,10 @@ function qa_db_posts_basic_selectspec($voteuserid = null, $full = false, $user =
 		'arraykey' => 'postid',
 		'source' => '^posts LEFT JOIN ^categories ON ^categories.categoryid=^posts.categoryid',
 		'arguments' => array(),
+		'filter' => function($post) {
+			$p2c = qa_load_module('process', 'Permissions2Categories');
+			return $p2c->has_permit($post['categoryid']);
+		}
 	);
 
 	if (isset($voteuserid)) {
@@ -1076,6 +1080,10 @@ function qa_db_category_nav_selectspec($slugsorid, $isid, $ispostid = false, $fu
 		'arguments' => array($slugsorid, $slugsorid, $slugsorid, $slugsorid),
 		'arraykey' => 'categoryid',
 		'sortasc' => 'position',
+		'filter' => function($cat) {
+			$p2c = qa_load_module('process', 'Permissions2Categories');
+			return $p2c->has_permit($cat['categoryid']);
+		}
 	);
 
 	if ($full) {
@@ -1101,6 +1109,10 @@ function qa_db_category_sub_selectspec($categoryid)
 		'arguments' => array($categoryid),
 		'arraykey' => 'categoryid',
 		'sortasc' => 'position',
+		'filter' => function($cat) {
+			$p2c = qa_load_module('process', 'Permissions2Categories');
+			return $p2c->has_permit($cat['categoryid']);
+		}
 	);
 }
 

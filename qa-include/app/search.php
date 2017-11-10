@@ -135,6 +135,6 @@ function qa_get_search_results($query, $start, $count, $userid, $absoluteurls, $
 	}
 
 	// Return the results
-
+	
 	return $results;
 }
