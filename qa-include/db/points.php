@@ -61,7 +61,7 @@ function qa_db_points_calculations()
 	return array(
 		'qposts' => array(
 			'multiple' => $options['points_multiple'] * $options['points_post_q'],
-			'formula' => "COUNT(*) AS qposts FROM ^posts AS userid_src WHERE userid~ AND type='Q'",
+			'formula' => "COUNT(*) AS qposts FROM ^posts AS userid_src WHERE userid~ AND type='Q' AND bShowUsername = 'Y'",
 		),
 
 		'aposts' => array(

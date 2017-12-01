@@ -47,6 +47,11 @@ list($useraccount, $questions, $answerqs, $commentqs, $editqs) = qa_db_select_wi
 if (!QA_FINAL_EXTERNAL_USERS && !is_array($useraccount)) // check the user exists
 	return include QA_INCLUDE_DIR . 'qa-page-not-found.php';
 
+if($loginuserid != $useraccount['userid']) {
+	$questions = array_filter($questions, function($question) {
+		if($question['bShowUsername'] === 'Y') return true;
+	});
+}
 
 // Get information on user references
 

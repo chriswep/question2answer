@@ -88,7 +88,7 @@ function qa_question_create($followanswer, $userid, $handle, $cookieid, $title, 
 	} else {
 		qa_post_index($postid, 'Q', $postid, @$followanswer['postid'], $title, $content, $format, $text, $tagstring, $categoryid);
 		qa_update_counts_for_q($postid);
-		qa_db_points_update_ifuser($userid, 'qposts');
+		if($bShowUsername) qa_db_points_update_ifuser($userid, 'qposts');
 	}
 
 	qa_report_event($queued ? 'q_queue' : 'q_post', $userid, $handle, $cookieid, array(
