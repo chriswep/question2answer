@@ -66,13 +66,13 @@ function qa_combine_notify_email($userid, $notify, $email)
  * @return mixed
  */
 function qa_question_create($followanswer, $userid, $handle, $cookieid, $title, $content, $format, $text, $tagstring, $notify, $email,
-	$categoryid = null, $extravalue = null, $queued = false, $name = null)
+	$categoryid = null, $extravalue = null, $queued = false, $name = null, $bShowUsername = true)
 {
 	require_once QA_INCLUDE_DIR . 'db/selects.php';
 
 	$postid = qa_db_post_create($queued ? 'Q_QUEUED' : 'Q', @$followanswer['postid'], $userid, isset($userid) ? null : $cookieid,
 		qa_remote_ip_address(), $title, $content, $format, $tagstring, qa_combine_notify_email($userid, $notify, $email),
-		$categoryid, isset($userid) ? null : $name);
+		$categoryid, isset($userid) ? null : $name, $bShowUsername);
 
 	if (isset($extravalue)) {
 		require_once QA_INCLUDE_DIR . 'db/metas.php';

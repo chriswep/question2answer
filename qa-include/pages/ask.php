@@ -113,6 +113,7 @@ if (qa_clicked('doask')) {
 
 	$in['name'] = qa_opt('allow_anonymous_naming') ? qa_post_text('name') : null;
 	$in['notify'] = strlen(qa_post_text('notify')) > 0;
+	$in['bShowUsername'] = !(strlen(qa_post_text('bShowUsername')) > 0);
 	$in['email'] = qa_post_text('email');
 	$in['queued'] = qa_user_moderation_reason($userlevel) !== false;
 
@@ -168,7 +169,7 @@ if (qa_clicked('doask')) {
 
 			$questionid = qa_question_create($followanswer, $userid, qa_get_logged_in_handle(), $cookieid,
 				$in['title'], $in['content'], $in['format'], $in['text'], isset($in['tags']) ? qa_tags_to_tagstring($in['tags']) : '',
-				$in['notify'], $in['email'], $in['categoryid'], $in['extra'], $in['queued'], $in['name']);
+				$in['notify'], $in['email'], $in['categoryid'], $in['extra'], $in['queued'], $in['name'], $in['bShowUsername']);
 
 			qa_redirect(qa_q_request($questionid, $in['title'])); // our work is done here
 		}
@@ -307,5 +308,11 @@ if ($captchareason) {
 
 $qa_content['focusid'] = 'title';
 
+$qa_content['form']['fields']['bShowUsername'] = array(
+	'tags' => 'name="' . $fieldprefix . 'bShowUsername"',
+	'type' => 'checkbox',
+	// 'value' => 1,
+	'label' => 'Meine Benutzernamen bei dieser Frage nicht anzeigen'
+);
 
 return $qa_content;

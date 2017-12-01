@@ -41,12 +41,12 @@ if (!defined('QA_VERSION')) { // don't allow this page to be requested directly 
  * @param $name
  * @return mixed
  */
-function qa_db_post_create($type, $parentid, $userid, $cookieid, $ip, $title, $content, $format, $tagstring, $notify, $categoryid = null, $name = null)
+function qa_db_post_create($type, $parentid, $userid, $cookieid, $ip, $title, $content, $format, $tagstring, $notify, $categoryid = null, $name = null, $bShowUsername = true)
 {
 	qa_db_query_sub(
-		'INSERT INTO ^posts (categoryid, type, parentid, userid, cookieid, createip, title, content, format, tags, notify, name, created) ' .
-		'VALUES (#, $, #, $, #, UNHEX($), $, $, $, $, $, $, NOW())',
-		$categoryid, $type, $parentid, $userid, $cookieid, bin2hex(@inet_pton($ip)), $title, $content, $format, $tagstring, $notify, $name
+		'INSERT INTO ^posts (categoryid, type, parentid, userid, cookieid, createip, title, content, format, tags, notify, name, bShowUsername, created) ' .
+		'VALUES (#, $, #, $, #, UNHEX($), $, $, $, $, $, $, $, NOW())',
+		$categoryid, $type, $parentid, $userid, $cookieid, bin2hex(@inet_pton($ip)), $title, $content, $format, $tagstring, $notify, $name, $bShowUsername ? 'Y' : 'N'
 	);
 
 	return qa_db_last_insert_id();
